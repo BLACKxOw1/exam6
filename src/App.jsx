@@ -16,6 +16,7 @@ import FakeStore from "./pages/FakeStore";
 import DummyJSON from "./pages/DummyJSON";
 import MockAPI from "./pages/MockAPI";
 import JSONPlaceholder from "./pages/JSONPlaceholder";
+import SinglePost from "./pages/SinglePost";
 import Cart from "./pages/Cart";
 import VideoDetail from "./pages/VideoDetail";
 
@@ -39,6 +40,8 @@ function App() {
                   element={<SingleCourseProduct />}
                 />
                 <Route path="/tours" element={<Tours />} />
+
+                <Route path="/post/:id" element={<SinglePost />} />
 
                 <Route path="/reqres" element={<ReqRes />} />
                 <Route path="/fakestore" element={<FakeStore />} />

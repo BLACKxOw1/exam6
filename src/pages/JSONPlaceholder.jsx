@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function JSONPlaceholder() {
   const [posts, setPosts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    fetch("https://jsonplaceholder.typicode.com/posts")
       .then((res) => res.json())
       .then(setPosts);
   }, []);
@@ -14,11 +16,13 @@ function JSONPlaceholder() {
       <h1 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
         JSONPlaceholder Posts
       </h1>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((post) => (
           <div
             key={post.id}
-            className="bg-white dark:bg-zinc-700 rounded-lg shadow p-4 cursor-pointer"
+            onClick={() => navigate(`/post/${post.id}`)}
+            className="bg-white dark:bg-zinc-700 rounded-lg shadow p-4 cursor-pointer hover:shadow-lg transition"
           >
             <h2 className="font-bold text-lg dark:text-gray-100 mb-2">
               {post.title}
